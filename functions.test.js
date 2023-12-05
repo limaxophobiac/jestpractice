@@ -82,3 +82,52 @@ test('calculator multiplies by negative number', () => {
 test('calculator multiplies int with double', () => {
     expect(calculator.multiply(7, 3.6)).toBe(25.2);
 });
+
+
+
+test('analyze length 0 array', () => {
+    expect(analyzeArray([])).toEqual({average: undefined, min: undefined, max: undefined, length: 0});
+});
+
+test('analyze length 1 array', () => {
+    expect(analyzeArray([5])).toEqual({average: 5, min: 5, max: 5, length: 1});
+});
+
+test('analyze length 5 array of positive integers', () => {
+    expect(analyzeArray([1,2,3,4,5])).toEqual({average: 3, min: 1, max: 5, length: 5});
+});
+
+test('avergage of length 5 array of negative numbers and doubles', () => {
+    expect(analyzeArray([-5.2,32.3,55.2,-44.1,0]).average).toBeCloseTo(7.64);
+});
+
+test('max of length 5 array of negative numbers and doubles', () => {
+    expect(analyzeArray([-5.2,32.3,55.2,-44.1,0]).max).toBe(55.2);
+});
+
+test('min of length 5 array of negative numbers and doubles', () => {
+    expect(analyzeArray([-5.2,32.3,55.2,-44.1,0]).min).toBe(-44.1);
+});
+
+
+test('expect to throw an error if not an array', () => {
+    expect(() => analyzeArray("dfgsdfg")).toThrow();
+});
+
+
+test('z + 1 to equal a', () => {
+    expect(ceasarCipher("z", 1)).toEqual("a");
+});
+
+test('capitalization', () => {
+    expect(ceasarCipher("A", 1)).toEqual("B");
+});
+
+test('word', () => {
+    expect(ceasarCipher("Hello", 3)).toEqual("Khoor");
+});
+
+test('including non letters', () => {
+    expect(ceasarCipher("H7j3", 27)).toEqual("I7k3");
+});
+
